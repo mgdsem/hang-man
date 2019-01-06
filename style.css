@@ -23,5 +23,11 @@ body {
 
 .column {
     width: 50%;
+}
 
+.letters-container {}
+
+.letter-container {
+    width: 75px;
+    display: inline-block;
 }
