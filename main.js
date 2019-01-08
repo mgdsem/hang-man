@@ -14,8 +14,11 @@ function render() {
     LETTERS.forEach((letter) => {
         console.log(letter);
         const letterContainer = document.createElement('div');
-        letterContainer.innerText = letter;
         letterContainer.classList.add('letter-container');
+        const letterButton = document.createElement('button');
+        letterButton.innerText = letter;
+        letterButton.classList.add('letter-button');
+        letterContainer.appendChild(letterButton);
         lettersContainer.appendChild(letterContainer);
     })
 }

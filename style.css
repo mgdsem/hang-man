@@ -6,6 +6,7 @@
 body {
     background-color: black;
     color: white;
+    font-family: 'Inconsolata', monospace;
 }
 
 .header {
@@ -29,5 +30,30 @@ body {
 
 .letter-container {
     width: 75px;
-    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 6px 0;
+}
+
+.letter-button {
+    width: 70px;
+    height: 70px;
+    background-color: black;
+    color: grey;
+    border: 3px solid grey;
+    border-radius: 20px;
+    font-size: 25px;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+
+}
+
+.letter-button:hover,
+.letter-button:focus {
+    color: white;
+    border-color: white;
+
 }
