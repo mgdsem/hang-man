@@ -26,8 +26,6 @@ body {
     width: 50%;
 }
 
-.letters-container {}
-
 .letter-container {
     width: 75px;
     display: inline-flex;
@@ -48,7 +46,6 @@ body {
     outline: none;
     cursor: pointer;
     transition: all 0.3s ease-in;
-
 }
 
 .letter-button:hover,

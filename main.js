@@ -6,7 +6,6 @@ console.log(LETTERS);
 // HTML elements
 
 const lettersContainer = document.getElementById('letters-container');
-lettersContainer.classList.add('letters-container');
 
 // logic
 
