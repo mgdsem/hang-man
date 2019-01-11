@@ -80,3 +80,8 @@ body {
     color: red;
     border-color: red;
 }
+
+.img-container-wraper {
+    display: flex;
+    align-items: center;
+}

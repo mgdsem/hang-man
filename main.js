@@ -1,7 +1,7 @@
 // constans
 
 const LETTERS = 'aąbcdefghijklłmnoópqrsśtuvwxyz'.split('');
-const SENTENCE = 'Nie chwal shakiego przed zjebaniem jego'
+const SENTENCE = 'lala'
 const preparedSentence = SENTENCE.toLowerCase().split('');
 
 const state = {
@@ -14,6 +14,7 @@ const state = {
 
 const lettersContainer = document.getElementById('letters-container');
 const header = document.getElementById('header');
+const imgContainer = document.getElementById('img-container');
 
 // event listeners
 
@@ -71,11 +72,19 @@ function generateAnswer(pickedLetter) {
     return preparedSentence.map(sign => sign !== ' ' ? '-' : ' ').join('');
 }
 
+
+
 // renders
 
 function render() {
+    if (state.uncorrectLetters.length <= 9) {
+        renderImg();
+    }
     renderLetters();
+
     header.innerText = state.currentAnswer;
+    console.log(state.currentAnswer);
+    console.log(state);
 }
 
 function renderLetters() {
@@ -100,6 +109,14 @@ function renderLetters() {
         lettersContainer.appendChild(letterContainer);
 
     })
+}
+
+function renderImg() {
+    imgContainer.innerHTML = null;
+    const img = document.createElement('img');
+    img.src = `img/s${state.uncorrectLetters.length}.jpg`;
+
+    imgContainer.appendChild(img)
 }
 
 render();
