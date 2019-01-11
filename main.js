@@ -1,11 +1,13 @@
 // constans
 
-const LETTERS = 'aąbcdęfghijklłmnoópqrsśtuvwxyz'.split('');
+const LETTERS = 'aąbcdefghijklłmnoópqrsśtuvwxyz'.split('');
 const SENTENCE = 'Nie chwal shakiego przed zjebaniem jego'
+const preparedSentence = SENTENCE.toLowerCase().split('');
 
 const state = {
     currentAnswer: generateAnswer(),
     correctLetters: [],
+    uncorrectLetters: [],
 }
 
 // HTML elements
@@ -15,11 +17,13 @@ const header = document.getElementById('header');
 
 // event listeners
 
-function onPickLetter(e) {
+function onPickLetter(event) {
     const pickedLetter = event.target.innerText;
-    if (SENTENCE.split('').includes(pickedLetter)) {
+    if (preparedSentence.includes(pickedLetter)) {
         state.currentAnswer = generateAnswer(pickedLetter);
         state.correctLetters.push(pickedLetter);
+    } else {
+        state.uncorrectLetters.push(pickedLetter);
     }
     render();
 }
@@ -33,7 +37,7 @@ function onPickLetter(e) {
 
 function generateAnswer(pickedLetter) {
     if (pickedLetter) {
-        return SENTENCE.split('').map(letter => {
+        return preparedSentence.map(letter => {
             if (letter === pickedLetter || state.correctLetters.includes(letter)) {
                 return letter;
             }
@@ -44,7 +48,7 @@ function generateAnswer(pickedLetter) {
         }).join('');
     }
 
-    // const signs = SENTENCE.split('')
+    // const signs = preparedSentence
     // const signsArray = signs.map((sign) => {
     //     if (sign !== ' ') {
     //         return '-';
@@ -60,11 +64,11 @@ function generateAnswer(pickedLetter) {
     // const finalSigns = signsArray.join('');
     // console.log(finalSigns);
 
-    // const signs = SENTENCE.split('').map(sign => sign !== ' ' ? '-' : ' ').join('');
+    // const signs = preparedSentence.map(sign => sign !== ' ' ? '-' : ' ').join('');
     // console.log(signs);
     // return signs;
 
-    return SENTENCE.split('').map(sign => sign !== ' ' ? '-' : ' ').join('');
+    return preparedSentence.map(sign => sign !== ' ' ? '-' : ' ').join('');
 }
 
 // renders
@@ -76,14 +80,23 @@ function render() {
 
 function renderLetters() {
     lettersContainer.innerHTML = null;
+
     LETTERS.forEach((letter) => {
         const letterContainer = document.createElement('div');
         letterContainer.classList.add('letter-container');
+
         const letterButton = document.createElement('button');
         letterButton.innerText = letter;
         letterButton.addEventListener('click', onPickLetter);
         letterButton.classList.add('letter-button');
+        if (state.correctLetters.includes(letter)) {
+            letterButton.classList.add('green-letter');
+        }
+        if (state.uncorrectLetters.includes(letter)) {
+            letterButton.classList.add('red-letter');
+        }
         letterContainer.appendChild(letterButton);
+
         lettersContainer.appendChild(letterContainer);
 
     })

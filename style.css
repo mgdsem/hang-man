@@ -56,3 +56,27 @@ body {
     color: white;
     border-color: white;
 }
+
+.green-letter {
+    color: green;
+    border-color: green;
+    pointer-events: none;
+}
+
+.green-letter:hover,
+.green-letter:focus {
+    color: green;
+    border-color: green;
+}
+
+.red-letter {
+    color: red;
+    border-color: red;
+    pointer-events: none;
+}
+
+.red-letter:hover,
+.red-letter:focus {
+    color: red;
+    border-color: red;
+}
